@@ -13,7 +13,7 @@ namespace projetoTreino
         private FbConnection conn;
 
         private string[] heads = { "Cod.", "Nome", "Email" };
-        private int[] widths = { 40, 320, 320 };
+        private int[] widths = { 40, 323, 324 };
 
         public Form1()
         {
@@ -22,6 +22,12 @@ namespace projetoTreino
 
             ToolTip tt = new ToolTip();
             tt.SetToolTip(btSalvar, "Salvar");
+
+            // Ativando Filtro das Colunas do DataGrid
+            foreach (DataGridViewColumn column in grdUsuarios.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
         }
 
         // Cadastar Usuário
