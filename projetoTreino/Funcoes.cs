@@ -47,19 +47,21 @@ namespace projetoTreino
             });
         }
 
+        // Habilitar os Campos
+        public static void habilitarCampos(Panel panel)
+        {
+            AllSubControls(panel).Where(c => !(c is Label) && !(c is Panel)).ToList().ForEach(c =>
+            {
+                c.Enabled = true;
+            });
+        }
+
+        // Desabilitar os Campos
         public static void desabilitarCampos(Panel panel)
         {
             AllSubControls(panel).Where(c => !(c is Label) && !(c is Panel)).ToList().ForEach(c =>
             {
                 c.Enabled = false;
-            });
-        }
-
-        public  static void habilitarCampos(Panel panel)
-        {
-            AllSubControls(panel).Where(c => !(c is Label) && !(c is Panel)).ToList().ForEach(c =>
-            {
-                c.Enabled = true;
             });
         }
     }

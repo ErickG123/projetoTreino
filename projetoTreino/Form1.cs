@@ -121,6 +121,7 @@ namespace projetoTreino
             {
                 Modo = TipoDeCadastro.Edicao;
                 Funcoes.habilitarCampos(plUsuarios);
+                txtId.Enabled = false;
             }
         }
         
