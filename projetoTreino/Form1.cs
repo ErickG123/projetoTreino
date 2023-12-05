@@ -19,8 +19,13 @@ namespace projetoTreino
         {
             InitializeComponent();
             carregarDados();
+
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(btSalvar, "Salvar");
+            tt.SetToolTip(btFiltrar, "Filtrar");
         }
 
+        // Cadastar Usuário
         private void btSalvar_Click(object sender, EventArgs e)
         {
             conn = new FbConnection(strConnection);
@@ -67,7 +72,7 @@ namespace projetoTreino
             string sql = @"SELECT u.id, u.nome, u.email FROM usuarios u";
             if (txtFiltro.Text.Length > 0)
             {
-                sql += " WHERE nome LIKE @text OR email LIKE @texto";
+                sql += " WHERE nome LIKE @texto OR email LIKE @texto";
             }
 
             FbCommand cmd = new FbCommand(sql, conn);
