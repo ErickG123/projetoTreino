@@ -2,6 +2,7 @@ using FirebirdSql.Data.FirebirdClient;
 using System.Data;
 using System.Data.Common;
 using System.Drawing;
+using static projetoTreino.Enums;
 
 namespace projetoTreino
 {
@@ -15,6 +16,7 @@ namespace projetoTreino
 
         private string[] heads = { "Cod.", "Nome", "Email" };
         private int[] widths = { 40, 323, 324 };
+        private TipoDeCadastro Modo = TipoDeCadastro.Novo;
 
         public Form1()
         {
@@ -35,33 +37,75 @@ namespace projetoTreino
         private void btSalvar_Click(object sender, EventArgs e)
         {
             conn = new FbConnection(strConnection);
+            string sql = "";
+            FbCommand cmd;
 
-            string sql = @"
-                INSERT INTO usuarios (id,  nome, email, password) VALUES (@id, @nome, @email, @senha)
-            ";
-            FbCommand cmd = new FbCommand(sql, conn);
-
-            cmd.Parameters.AddWithValue("@id", txtId.Text);
-            cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-            cmd.Parameters.AddWithValue("@senha", mkdSenha.Text);
-
-            conn.Open();
-
-            try
+            // Validando se os Campos foram Preenchidos
+            if (txtId.Text.Length < 1 || txtNome.Text.Length  < 1 || txtEmail.Text.Length < 1 || mkdSenha.Text.Length < 1)
             {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Problema na Inserção!" + ex.Message);
-                conn.Close();
-                return;
+                MessageBox.Show("Está faltando Informações", "ProjetoTeste", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            carregarDados();
-            conn.Close();
-            MessageBox.Show("Usuário cadastrado com sucesso!");
+            // Efetuando a Operação com Base no TipoDeCadastro
+            switch (Modo)
+            {
+                case TipoDeCadastro.Edicao:
+                    // Código para Atualizar um Usuário
+                    sql = @"UPDATE usuarios 
+                    SET nome = @nome, email = @email, password = @senha
+                    WHERE id = @id";
+                    cmd = new FbCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@senha", mkdSenha.Text);
+                    cmd.Parameters.AddWithValue("@id", txtId.Text);
+
+                    conn.Open();
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Problema na Inserção!" + ex.Message);
+                        conn.Close();
+                    }
+
+                    carregarDados();
+                    MessageBox.Show("Usuário atualizado com sucesso!");
+                    conn.Close();
+                    break;
+                case TipoDeCadastro.Novo:
+                    // Código para Criar um Novo Usuário
+                    sql = @"INSERT INTO usuarios (id,  nome, email, password) 
+                                 VALUES (@id, @nome, @email, @senha)";
+                    cmd = new FbCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@id", txtId.Text);
+                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@senha", mkdSenha.Text);
+
+                    conn.Open();
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Problema na Inserção!" + ex.Message);
+                        conn.Close();
+                        return;
+                    }
+
+                    carregarDados();
+                    conn.Close();
+                    MessageBox.Show("Usuário cadastrado com sucesso!");
+                    break;
+            }
         }
 
         // Filtrar Dados
@@ -70,6 +114,16 @@ namespace projetoTreino
             carregarDados();
         }
 
+        // Editar Dados
+        private void btEditar_Click(object sender, EventArgs e)
+        {
+            if (grdUsuarios.SelectedRows.Count > 0)
+            {
+                Modo = TipoDeCadastro.Edicao;
+                Funcoes.habilitarCampos(plUsuarios);
+            }
+        }
+        
         // Mostrar dados nos campos
         private void grdUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {

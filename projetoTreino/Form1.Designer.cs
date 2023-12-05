@@ -36,6 +36,7 @@
             txtEmail = new TextBox();
             grdUsuarios = new DataGridView();
             plUsuarios = new Panel();
+            btEditar = new Button();
             txtId = new TextBox();
             lbId = new Label();
             mkdSenha = new MaskedTextBox();
@@ -124,6 +125,16 @@
             plUsuarios.Size = new Size(228, 215);
             plUsuarios.TabIndex = 8;
             // 
+            // btEditar
+            // 
+            btEditar.Location = new Point(528, 204);
+            btEditar.Name = "btEditar";
+            btEditar.Size = new Size(104, 23);
+            btEditar.TabIndex = 10;
+            btEditar.Text = "Editar";
+            btEditar.UseVisualStyleBackColor = true;
+            btEditar.Click += btEditar_Click;
+            // 
             // txtId
             // 
             txtId.Location = new Point(7, 22);
@@ -180,6 +191,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(754, 548);
+            Controls.Add(btEditar);
             Controls.Add(panel1);
             Controls.Add(plUsuarios);
             Controls.Add(grdUsuarios);
@@ -209,5 +221,6 @@
         private Panel panel1;
         private TextBox txtFiltro;
         private Label label1;
+        private Button btEditar;
     }
 }
