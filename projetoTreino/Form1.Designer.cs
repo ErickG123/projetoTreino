@@ -40,9 +40,8 @@
             lbId = new Label();
             mkdSenha = new MaskedTextBox();
             panel1 = new Panel();
-            label1 = new Label();
             txtFiltro = new TextBox();
-            btFiltrar = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)grdUsuarios).BeginInit();
             plUsuarios.SuspendLayout();
             panel1.SuspendLayout();
@@ -151,22 +150,12 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.AppWorkspace;
-            panel1.Controls.Add(btFiltrar);
             panel1.Controls.Add(txtFiltro);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(260, 166);
             panel1.Name = "panel1";
-            panel1.Size = new Size(343, 61);
+            panel1.Size = new Size(262, 61);
             panel1.TabIndex = 9;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(11, 11);
-            label1.Name = "label1";
-            label1.Size = new Size(128, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Filtrar por Nome/Email";
             // 
             // txtFiltro
             // 
@@ -176,14 +165,14 @@
             txtFiltro.TabIndex = 1;
             txtFiltro.TextChanged += txtFiltro_TextChanged;
             // 
-            // btFiltrar
+            // label1
             // 
-            btFiltrar.Location = new Point(259, 29);
-            btFiltrar.Name = "btFiltrar";
-            btFiltrar.Size = new Size(75, 23);
-            btFiltrar.TabIndex = 2;
-            btFiltrar.Text = "Filtrar";
-            btFiltrar.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(11, 11);
+            label1.Name = "label1";
+            label1.Size = new Size(128, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Filtrar por Nome/Email";
             // 
             // Form1
             // 
@@ -219,6 +208,5 @@
         private Panel panel1;
         private TextBox txtFiltro;
         private Label label1;
-        private Button btFiltrar;
     }
 }

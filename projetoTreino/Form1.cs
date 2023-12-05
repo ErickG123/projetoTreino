@@ -13,7 +13,7 @@ namespace projetoTreino
         private FbConnection conn;
 
         private string[] heads = { "Cod.", "Nome", "Email" };
-        private int[] widths = { 40, 200, 200 };
+        private int[] widths = { 40, 320, 320 };
 
         public Form1()
         {
@@ -22,7 +22,6 @@ namespace projetoTreino
 
             ToolTip tt = new ToolTip();
             tt.SetToolTip(btSalvar, "Salvar");
-            tt.SetToolTip(btFiltrar, "Filtrar");
         }
 
         // Cadastar Usuário
