@@ -1,6 +1,6 @@
 ﻿namespace projetoTreino
 {
-    partial class Form1
+    partial class frmUsuarios
     {
         /// <summary>
         ///  Required designer variable.
@@ -36,10 +36,10 @@
             txtEmail = new TextBox();
             grdUsuarios = new DataGridView();
             plUsuarios = new Panel();
-            btEditar = new Button();
             txtId = new TextBox();
             lbId = new Label();
             mkdSenha = new MaskedTextBox();
+            btEditar = new Button();
             panel1 = new Panel();
             txtFiltro = new TextBox();
             label1 = new Label();
@@ -125,16 +125,6 @@
             plUsuarios.Size = new Size(228, 215);
             plUsuarios.TabIndex = 8;
             // 
-            // btEditar
-            // 
-            btEditar.Location = new Point(528, 204);
-            btEditar.Name = "btEditar";
-            btEditar.Size = new Size(104, 23);
-            btEditar.TabIndex = 10;
-            btEditar.Text = "Editar";
-            btEditar.UseVisualStyleBackColor = true;
-            btEditar.Click += btEditar_Click;
-            // 
             // txtId
             // 
             txtId.Location = new Point(7, 22);
@@ -158,6 +148,16 @@
             mkdSenha.PasswordChar = '*';
             mkdSenha.Size = new Size(213, 23);
             mkdSenha.TabIndex = 6;
+            // 
+            // btEditar
+            // 
+            btEditar.Location = new Point(528, 204);
+            btEditar.Name = "btEditar";
+            btEditar.Size = new Size(104, 23);
+            btEditar.TabIndex = 10;
+            btEditar.Text = "Editar";
+            btEditar.UseVisualStyleBackColor = true;
+            btEditar.Click += btEditar_Click;
             // 
             // panel1
             // 
@@ -186,7 +186,7 @@
             label1.TabIndex = 0;
             label1.Text = "Filtrar por Nome/Email";
             // 
-            // Form1
+            // frmUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -195,8 +195,8 @@
             Controls.Add(panel1);
             Controls.Add(plUsuarios);
             Controls.Add(grdUsuarios);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "frmUsuarios";
+            Text = "Cadastro de Usuários";
             ((System.ComponentModel.ISupportInitialize)grdUsuarios).EndInit();
             plUsuarios.ResumeLayout(false);
             plUsuarios.PerformLayout();

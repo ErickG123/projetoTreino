@@ -6,7 +6,7 @@ using static projetoTreino.Enums;
 
 namespace projetoTreino
 {
-    public partial class Form1 : Form
+    public partial class frmUsuarios : Form
     {
         private string strConnection = @"DataSource=localhost; 
                                      Database=C:\DBFire\TREINO.FBD; 
@@ -18,19 +18,13 @@ namespace projetoTreino
         private int[] widths = { 40, 323, 324 };
         private TipoDeCadastro Modo = TipoDeCadastro.Novo;
 
-        public Form1()
+        public frmUsuarios()
         {
             InitializeComponent();
             carregarDados();
 
             ToolTip tt = new ToolTip();
             tt.SetToolTip(btSalvar, "Salvar");
-
-            // Ativando Filtro das Colunas do DataGrid
-            foreach (DataGridViewColumn column in grdUsuarios.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.Automatic;
-            }
         }
 
         // Cadastar Usuário
