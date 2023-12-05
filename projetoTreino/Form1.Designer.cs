@@ -105,6 +105,7 @@
             grdUsuarios.Name = "grdUsuarios";
             grdUsuarios.Size = new Size(730, 303);
             grdUsuarios.TabIndex = 7;
+            grdUsuarios.CellClick += grdUsuarios_CellClick;
             // 
             // plUsuarios
             // 

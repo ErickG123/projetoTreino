@@ -1,5 +1,6 @@
 using FirebirdSql.Data.FirebirdClient;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 
 namespace projetoTreino
@@ -69,6 +70,19 @@ namespace projetoTreino
             carregarDados();
         }
 
+        // Mostrar dados nos campos
+        private void grdUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdUsuarios.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                grdUsuarios.CurrentRow.Selected = true;
+                txtId.Text = grdUsuarios.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                txtNome.Text = grdUsuarios.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+                txtEmail.Text = grdUsuarios.Rows[e.RowIndex].Cells["email"].Value.ToString();
+            }
+            Funcoes.desabilitarCampos(plUsuarios);
+        }
+
         // Carregar os Dados dos Usuários no Grid
         private void carregarDados()
         {
@@ -81,7 +95,7 @@ namespace projetoTreino
             }
 
             FbCommand cmd = new FbCommand(sql, conn);
-            if (txtFiltro.Text.Length  > 0)
+            if (txtFiltro.Text.Length > 0)
             {
                 cmd.Parameters.AddWithValue("@texto", txtFiltro.Text);
             }

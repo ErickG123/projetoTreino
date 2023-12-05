@@ -36,14 +36,30 @@ namespace projetoTreino
         // Limpar todos os Campos de Texto
         public static void limparTexto(Panel panel)
         {
-            Funcoes.AllSubControls(panel).OfType<TextBox>().ToList().ForEach(t =>
+            AllSubControls(panel).OfType<TextBox>().ToList().ForEach(t =>
             {
                 t.Text = "";
             });
 
-            Funcoes.AllSubControls(panel).OfType<MaskedTextBox>().ToList().ForEach(t =>
+            AllSubControls(panel).OfType<MaskedTextBox>().ToList().ForEach(t =>
             {
                 t.Text = "";
+            });
+        }
+
+        public static void desabilitarCampos(Panel panel)
+        {
+            AllSubControls(panel).Where(c => !(c is Label) && !(c is Panel)).ToList().ForEach(c =>
+            {
+                c.Enabled = false;
+            });
+        }
+
+        public  static void habilitarCampos(Panel panel)
+        {
+            AllSubControls(panel).Where(c => !(c is Label) && !(c is Panel)).ToList().ForEach(c =>
+            {
+                c.Enabled = true;
             });
         }
     }
