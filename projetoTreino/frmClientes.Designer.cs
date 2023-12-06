@@ -28,20 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            btExportarCsv = new Button();
-            btSalvar = new Button();
-            btEditar = new Button();
-            btNovo = new Button();
             plClientes = new Panel();
-            maskedTextBox1 = new MaskedTextBox();
-            textBox1 = new TextBox();
+            mkdCep = new MaskedTextBox();
+            txtUf = new TextBox();
             cmbCidade = new ComboBox();
             txtBairro = new TextBox();
             txtNumero = new TextBox();
             txtEndereco = new TextBox();
             txtTelefone = new TextBox();
-            maskedTextBox2 = new MaskedTextBox();
+            mkdCnpj = new MaskedTextBox();
             mkdCpf = new MaskedTextBox();
             cmbPessoa = new ComboBox();
             cmbSexo = new ComboBox();
@@ -69,78 +64,27 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            panel1.SuspendLayout();
+            btNovo = new Button();
+            btEditar = new Button();
+            btSalvar = new Button();
+            btExportarCsv = new Button();
+            flpBotoes = new FlowLayoutPanel();
             plClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdClientes).BeginInit();
             plFiltro.SuspendLayout();
+            flpBotoes.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.Highlight;
-            panel1.Controls.Add(btExportarCsv);
-            panel1.Controls.Add(btSalvar);
-            panel1.Controls.Add(btEditar);
-            panel1.Controls.Add(btNovo);
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(876, 50);
-            panel1.TabIndex = 0;
-            // 
-            // btExportarCsv
-            // 
-            btExportarCsv.FlatStyle = FlatStyle.Flat;
-            btExportarCsv.ForeColor = SystemColors.MenuHighlight;
-            btExportarCsv.Image = Properties.Resources.excel;
-            btExportarCsv.Location = new Point(246, 0);
-            btExportarCsv.Name = "btExportarCsv";
-            btExportarCsv.Size = new Size(75, 50);
-            btExportarCsv.TabIndex = 3;
-            btExportarCsv.UseVisualStyleBackColor = true;
-            // 
-            // btSalvar
-            // 
-            btSalvar.FlatStyle = FlatStyle.Flat;
-            btSalvar.ForeColor = SystemColors.MenuHighlight;
-            btSalvar.Image = Properties.Resources.salvar_small;
-            btSalvar.Location = new Point(165, 0);
-            btSalvar.Name = "btSalvar";
-            btSalvar.Size = new Size(75, 50);
-            btSalvar.TabIndex = 2;
-            btSalvar.UseVisualStyleBackColor = true;
-            // 
-            // btEditar
-            // 
-            btEditar.FlatStyle = FlatStyle.Flat;
-            btEditar.ForeColor = SystemColors.MenuHighlight;
-            btEditar.Image = Properties.Resources.editar;
-            btEditar.Location = new Point(84, 0);
-            btEditar.Name = "btEditar";
-            btEditar.Size = new Size(75, 50);
-            btEditar.TabIndex = 1;
-            btEditar.UseVisualStyleBackColor = true;
-            // 
-            // btNovo
-            // 
-            btNovo.FlatStyle = FlatStyle.Flat;
-            btNovo.ForeColor = SystemColors.MenuHighlight;
-            btNovo.Image = Properties.Resources.novo_small1;
-            btNovo.Location = new Point(3, 0);
-            btNovo.Name = "btNovo";
-            btNovo.Size = new Size(75, 50);
-            btNovo.TabIndex = 0;
-            btNovo.UseVisualStyleBackColor = true;
             // 
             // plClientes
             // 
-            plClientes.Controls.Add(maskedTextBox1);
-            plClientes.Controls.Add(textBox1);
+            plClientes.Controls.Add(mkdCep);
+            plClientes.Controls.Add(txtUf);
             plClientes.Controls.Add(cmbCidade);
             plClientes.Controls.Add(txtBairro);
             plClientes.Controls.Add(txtNumero);
             plClientes.Controls.Add(txtEndereco);
             plClientes.Controls.Add(txtTelefone);
-            plClientes.Controls.Add(maskedTextBox2);
+            plClientes.Controls.Add(mkdCnpj);
             plClientes.Controls.Add(mkdCpf);
             plClientes.Controls.Add(cmbPessoa);
             plClientes.Controls.Add(cmbSexo);
@@ -166,20 +110,20 @@
             plClientes.Size = new Size(876, 285);
             plClientes.TabIndex = 1;
             // 
-            // maskedTextBox1
+            // mkdCep
             // 
-            maskedTextBox1.Location = new Point(639, 147);
-            maskedTextBox1.Mask = "00\\.000\\-000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(106, 23);
-            maskedTextBox1.TabIndex = 27;
+            mkdCep.Location = new Point(639, 147);
+            mkdCep.Mask = "00\\.000\\-000";
+            mkdCep.Name = "mkdCep";
+            mkdCep.Size = new Size(106, 23);
+            mkdCep.TabIndex = 27;
             // 
-            // textBox1
+            // txtUf
             // 
-            textBox1.Location = new Point(579, 147);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(42, 23);
-            textBox1.TabIndex = 26;
+            txtUf.Location = new Point(579, 147);
+            txtUf.Name = "txtUf";
+            txtUf.Size = new Size(42, 23);
+            txtUf.TabIndex = 26;
             // 
             // cmbCidade
             // 
@@ -217,13 +161,13 @@
             txtTelefone.Size = new Size(137, 23);
             txtTelefone.TabIndex = 21;
             // 
-            // maskedTextBox2
+            // mkdCnpj
             // 
-            maskedTextBox2.Location = new Point(191, 84);
-            maskedTextBox2.Mask = "00\\.000\\.000\\/0000\\-00";
-            maskedTextBox2.Name = "maskedTextBox2";
-            maskedTextBox2.Size = new Size(205, 23);
-            maskedTextBox2.TabIndex = 20;
+            mkdCnpj.Location = new Point(191, 84);
+            mkdCnpj.Mask = "00\\.000\\.000\\/0000\\-00";
+            mkdCnpj.Name = "mkdCnpj";
+            mkdCnpj.Size = new Size(205, 23);
+            mkdCnpj.TabIndex = 20;
             // 
             // mkdCpf
             // 
@@ -475,29 +419,87 @@
             label1.TabIndex = 0;
             label1.Text = "Filtros";
             // 
+            // btNovo
+            // 
+            btNovo.FlatStyle = FlatStyle.Flat;
+            btNovo.ForeColor = SystemColors.MenuHighlight;
+            btNovo.Image = Properties.Resources.novo_small1;
+            btNovo.Location = new Point(3, 3);
+            btNovo.Name = "btNovo";
+            btNovo.Size = new Size(75, 47);
+            btNovo.TabIndex = 0;
+            btNovo.UseVisualStyleBackColor = true;
+            btNovo.Click += btNovo_Click;
+            // 
+            // btEditar
+            // 
+            btEditar.FlatStyle = FlatStyle.Flat;
+            btEditar.ForeColor = SystemColors.MenuHighlight;
+            btEditar.Image = Properties.Resources.editar;
+            btEditar.Location = new Point(84, 3);
+            btEditar.Name = "btEditar";
+            btEditar.Size = new Size(75, 47);
+            btEditar.TabIndex = 1;
+            btEditar.UseVisualStyleBackColor = true;
+            btEditar.Click += btEditar_Click;
+            // 
+            // btSalvar
+            // 
+            btSalvar.FlatStyle = FlatStyle.Flat;
+            btSalvar.ForeColor = SystemColors.MenuHighlight;
+            btSalvar.Image = Properties.Resources.salvar_small;
+            btSalvar.Location = new Point(165, 3);
+            btSalvar.Name = "btSalvar";
+            btSalvar.Size = new Size(75, 47);
+            btSalvar.TabIndex = 2;
+            btSalvar.UseVisualStyleBackColor = true;
+            btSalvar.Click += btSalvar_Click;
+            // 
+            // btExportarCsv
+            // 
+            btExportarCsv.FlatStyle = FlatStyle.Flat;
+            btExportarCsv.ForeColor = SystemColors.MenuHighlight;
+            btExportarCsv.Image = Properties.Resources.excel;
+            btExportarCsv.Location = new Point(246, 3);
+            btExportarCsv.Name = "btExportarCsv";
+            btExportarCsv.Size = new Size(75, 47);
+            btExportarCsv.TabIndex = 3;
+            btExportarCsv.UseVisualStyleBackColor = true;
+            btExportarCsv.Click += btExportarCsv_Click;
+            // 
+            // flpBotoes
+            // 
+            flpBotoes.BackColor = SystemColors.Highlight;
+            flpBotoes.Controls.Add(btNovo);
+            flpBotoes.Controls.Add(btEditar);
+            flpBotoes.Controls.Add(btSalvar);
+            flpBotoes.Controls.Add(btExportarCsv);
+            flpBotoes.Location = new Point(12, 12);
+            flpBotoes.Name = "flpBotoes";
+            flpBotoes.Size = new Size(876, 50);
+            flpBotoes.TabIndex = 7;
+            // 
             // frmClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 569);
+            Controls.Add(flpBotoes);
             Controls.Add(plFiltro);
             Controls.Add(grdClientes);
             Controls.Add(plClientes);
-            Controls.Add(panel1);
             Name = "frmClientes";
             Text = "Cadastro de Clientes";
-            panel1.ResumeLayout(false);
             plClientes.ResumeLayout(false);
             plClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)grdClientes).EndInit();
             plFiltro.ResumeLayout(false);
             plFiltro.PerformLayout();
+            flpBotoes.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
         private Panel plClientes;
         private DataGridView grdClientes;
         private Panel plFiltro;
@@ -506,10 +508,6 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private Button btNovo;
-        private Button btEditar;
-        private Button btExportarCsv;
-        private Button btSalvar;
         private TextBox txtNome;
         private MaskedTextBox mkdDCadastro;
         private TextBox txtCodigo;
@@ -528,15 +526,20 @@
         private Label lbNome;
         private Label lbCod;
         private TextBox txtTelefone;
-        private MaskedTextBox maskedTextBox2;
+        private MaskedTextBox mkdCnpj;
         private MaskedTextBox mkdCpf;
         private ComboBox cmbPessoa;
         private ComboBox cmbSexo;
-        private MaskedTextBox maskedTextBox1;
-        private TextBox textBox1;
+        private MaskedTextBox mkdCep;
+        private TextBox txtUf;
         private ComboBox cmbCidade;
         private TextBox txtBairro;
         private TextBox txtNumero;
         private TextBox txtEndereco;
+        private Button btNovo;
+        private Button btEditar;
+        private Button btSalvar;
+        private Button btExportarCsv;
+        private FlowLayoutPanel flpBotoes;
     }
 }

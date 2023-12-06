@@ -63,8 +63,9 @@ namespace projetoTreino
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Problema na Inserção!" + ex.Message);
+                        MessageBox.Show("Problema na Atualização!" + ex.Message);
                         conn.Close();
+                        return;
                     }
 
                     carregarDados();

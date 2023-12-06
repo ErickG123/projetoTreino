@@ -1,5 +1,8 @@
-﻿using System;
+﻿using FirebirdSql.Data.FirebirdClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +66,46 @@ namespace projetoTreino
             {
                 c.Enabled = false;
             });
+        }
+
+        // Pegando o ID do último Cliente cadastrado
+        public static int ultimoCliente()
+        {
+            string strConnection = @"DataSource=localhost; 
+                                     Database=C:\DBFire\TREINO.FBD; 
+                                     username=sysdba; 
+                                     password=masterkey";
+            
+            FbConnection conn = new FbConnection(strConnection);
+
+            string sql = @"SELECT COALESCE(MAX(id) + 1, 2) Cli FROM clientes";
+            FbCommand cmd = new FbCommand(sql, conn);
+
+            conn.Open();
+
+            int id = Convert.ToInt32(cmd.ExecuteScalar());
+
+            conn.Close();
+
+            return id;
+        }
+
+        // Exportar dados para um CSV
+        public static void exportarCsv(DataTable dt, string fileName)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("SEP=,");
+            var headers = dt.Columns.Cast<DataColumn>();
+            sb.AppendLine(string.Join(",", headers.Select(column => ($"\"{column.Caption.Replace("\"", "")}\"")).ToArray()));
+
+            foreach (DataRow row in dt.Rows)
+            {
+                sb.AppendLine(string.Join(",", row.ItemArray.Select(cell => $"\"{cell.ToString().Replace("\"", "")}\"").ToArray()));
+            }
+
+            System.IO.File.WriteAllText(fileName, sb.ToString());
+            MessageBox.Show("Exportado com sucesso!", "Projeto Treino", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Process.Start(fileName);
         }
     }
 }

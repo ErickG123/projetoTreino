@@ -32,10 +32,10 @@
             cadastrosGeraisToolStripMenuItem = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            flpBotoes = new FlowLayoutPanel();
             btClientes = new Button();
             menuStrip1.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            flpBotoes.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -68,14 +68,14 @@
             clientesToolStripMenuItem.Text = "Clientes";
             clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
             // 
-            // flowLayoutPanel1
+            // flpBotoes
             // 
-            flowLayoutPanel1.BackColor = SystemColors.Highlight;
-            flowLayoutPanel1.Controls.Add(btClientes);
-            flowLayoutPanel1.Location = new Point(12, 27);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(776, 64);
-            flowLayoutPanel1.TabIndex = 1;
+            flpBotoes.BackColor = SystemColors.Highlight;
+            flpBotoes.Controls.Add(btClientes);
+            flpBotoes.Location = new Point(12, 27);
+            flpBotoes.Name = "flpBotoes";
+            flpBotoes.Size = new Size(776, 64);
+            flpBotoes.TabIndex = 1;
             // 
             // btClientes
             // 
@@ -94,7 +94,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(flpBotoes);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "frmMenuPrincipal";
@@ -102,7 +102,7 @@
             FormClosed += frmMenuPrincipal_FormClosed;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
+            flpBotoes.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -113,7 +113,7 @@
         private ToolStripMenuItem cadastrosGeraisToolStripMenuItem;
         private ToolStripMenuItem usuariosToolStripMenuItem;
         private ToolStripMenuItem clientesToolStripMenuItem;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flpBotoes;
         private Button btClientes;
     }
 }
