@@ -67,9 +67,9 @@
             cbLembrarSenha.AutoSize = true;
             cbLembrarSenha.Location = new Point(3, 93);
             cbLembrarSenha.Name = "cbLembrarSenha";
-            cbLembrarSenha.Size = new Size(160, 19);
+            cbLembrarSenha.Size = new Size(157, 19);
             cbLembrarSenha.TabIndex = 4;
-            cbLembrarSenha.Text = "Lembrar  Usuário e Senha";
+            cbLembrarSenha.Text = "Lembrar Usuário e Senha";
             cbLembrarSenha.UseVisualStyleBackColor = true;
             // 
             // lbSenha
