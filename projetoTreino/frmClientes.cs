@@ -105,7 +105,8 @@ namespace projetoTreino
             DateTime dCadastro = DateTime.Now;
             int idCliente = int.Parse(txtCodigo.Text);
 
-            if (txtCodigo.Text.Length < 1) {
+            if (txtCodigo.Text.Length < 1)
+            {
                 MessageBox.Show("O Código do Cliente é obrigatório", "Projeto Treino", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (txtNome.Text.Length < 1)
@@ -117,7 +118,7 @@ namespace projetoTreino
             string sql = "";
             FbCommand cmd;
 
-            switch(Modo)
+            switch (Modo)
             {
                 case TipoDeCadastro.Edicao:
                     sql = @"UPDATE clientes SET 
@@ -220,13 +221,48 @@ namespace projetoTreino
             conn = new FbConnection(strConnection);
 
             string sql = @"SELECT * FROM clientes";
-            FbCommand cmd = new FbCommand(sql, conn);
 
             DataTable dt = new DataTable();
             FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
             dataAdapter.Fill(dt);
 
             Funcoes.exportarCsv(dt, "Clientes.csv");
+        }
+
+        private void grdClientes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (grdClientes.SelectedRows.Count > 0)
+            {
+                conn = new FbConnection(strConnection);
+
+                string sql = @"SELECT * FROM clientes WHERE id = @id";
+                FbCommand cmd = new FbCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", grdClientes.SelectedRows[0].Cells["id"].Value);
+
+                DataTable dt = new DataTable();
+                FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+                dataAdapter.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    txtCodigo.Text = $"{dt.Rows[0]["id"]}";
+                    mkdDCadastro.Text = $"{dt.Rows[0]["datacadastro"]}";
+                    txtNome.Text = $"{dt.Rows[0]["nome"]}";
+                    cmbSexo.SelectedValue = $"{dt.Rows[0]["sexo"]}";
+                    cmbPessoa.SelectedValue = $"{dt.Rows[0]["pessoa"]}";
+                    mkdCpf.Text = $"{dt.Rows[0]["cpf"]}";
+                    mkdCnpj.Text = $"{dt.Rows[0]["cnpj"]}";
+                    txtTelefone.Text = $"{dt.Rows[0]["telefone"]}";
+                    txtEndereco.Text = $"{dt.Rows[0]["endereco"]}";
+                    txtNumero.Text = $"{dt.Rows[0]["numero"]}";
+                    txtBairro.Text = $"{dt.Rows[0]["bairro"]}";
+                    cmbCidade.SelectedValue = (int)dt.Rows[0]["cidade"];
+                    txtUf.Text = $"{dt.Rows[0]["uf"]}";
+                    mkdCep.Text = $"{dt.Rows[0]["cep"]}";
+
+                    Funcoes.desabilitarCampos(plClientes);
+                }
+            }
         }
     }
 }
