@@ -32,7 +32,10 @@
             cadastrosGeraisToolStripMenuItem = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            btClientes = new Button();
             menuStrip1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -65,11 +68,33 @@
             clientesToolStripMenuItem.Text = "Clientes";
             clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.BackColor = SystemColors.Highlight;
+            flowLayoutPanel1.Controls.Add(btClientes);
+            flowLayoutPanel1.Location = new Point(12, 27);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(776, 64);
+            flowLayoutPanel1.TabIndex = 1;
+            // 
+            // btClientes
+            // 
+            btClientes.FlatStyle = FlatStyle.Flat;
+            btClientes.ForeColor = SystemColors.Highlight;
+            btClientes.Image = Properties.Resources.clientes;
+            btClientes.Location = new Point(3, 3);
+            btClientes.Name = "btClientes";
+            btClientes.Size = new Size(75, 61);
+            btClientes.TabIndex = 0;
+            btClientes.UseVisualStyleBackColor = true;
+            btClientes.Click += btClientes_Click;
+            // 
             // frmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "frmMenuPrincipal";
@@ -77,6 +102,7 @@
             FormClosed += frmMenuPrincipal_FormClosed;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -87,5 +113,7 @@
         private ToolStripMenuItem cadastrosGeraisToolStripMenuItem;
         private ToolStripMenuItem usuariosToolStripMenuItem;
         private ToolStripMenuItem clientesToolStripMenuItem;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btClientes;
     }
 }

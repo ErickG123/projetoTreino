@@ -31,11 +31,26 @@ namespace projetoTreino
             {
                 // Senão, ele abre o form
                 frmUsuarios usu = new frmUsuarios();
+                usu.WindowState = FormWindowState.Maximized;
                 usu.Show();
             }
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirFrmClientes();
+        }
+
+        private void btClientes_Click(object sender, EventArgs e)
+        {
+            abrirFrmClientes();
+        }
+        private void frmMenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        public void abrirFrmClientes()
         {
             var tem = Application.OpenForms.OfType<frmClientes>();
             if (tem.Any())
@@ -46,13 +61,9 @@ namespace projetoTreino
             else
             {
                 frmClientes cli = new frmClientes();
+                cli.WindowState = FormWindowState.Maximized;
                 cli.Show();
             }
-        }
-
-        private void frmMenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

@@ -43,6 +43,7 @@ namespace projetoTreino
                 if(dr.Read())
                 {
                     frmMenuPrincipal frm = new frmMenuPrincipal();
+                    frm.WindowState = FormWindowState.Maximized;
                     frm.Show();
                     this.Hide();
                 }

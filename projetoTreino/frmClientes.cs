@@ -20,12 +20,13 @@ namespace projetoTreino
         private FbConnection conn;
 
         private string[] heads = { "Cod.", "Nome", "CPF", "Endereço" };
-        private int[] widths = { 50, 200, 200, 200 };
+        private int[] widths = { 50, 200, 100, 200 };
 
         public frmClientes()
         {
             InitializeComponent();
             carregarDados();
+            combos();
 
             ToolTip tt = new ToolTip();
             tt.SetToolTip(btNovo, "Novo");
@@ -38,7 +39,7 @@ namespace projetoTreino
         {
             conn = new FbConnection(strConnection);
             
-            string sql = @"SELECT c.id, c.nome, c.cpf,  c.endereco FROM clientes c";
+            string sql = @"SELECT c.id, c.nome, c.cpf, c.endereco FROM clientes c";
             FbCommand cmd = new FbCommand(sql, conn);
 
             FbDataAdapter  dataAdapter = new FbDataAdapter(cmd);
@@ -55,6 +56,27 @@ namespace projetoTreino
 
             Funcoes.limparTexto(plClientes);
             Funcoes.formatarGrid(grdClientes, heads, widths);
+        }
+
+        public void combos()
+        {
+            DataTable dtSexo = new DataTable();
+            dtSexo.Columns.Add("ID", typeof(string));
+            dtSexo.Columns.Add("Descr", typeof(string));
+            dtSexo.Rows.Add(new object[] { "F", "F" });
+            dtSexo.Rows.Add(new object[] { "M", "M" });
+            cmbSexo.DataSource = dtSexo;
+            cmbSexo.DisplayMember = "Descr";
+            cmbSexo.ValueMember = "ID";
+
+            DataTable dtPessoa = new DataTable();
+            dtPessoa.Columns.Add("ID", typeof(string));
+            dtPessoa.Columns.Add("Descr", typeof(string));
+            dtPessoa.Rows.Add(new object[] { "F", "F" });
+            dtPessoa.Rows.Add(new object[] { "J", "J" });
+            cmbPessoa.DataSource = dtPessoa;
+            cmbPessoa.DisplayMember = "ID";
+            cmbPessoa.ValueMember = "Descr";
         }
     }
 }
