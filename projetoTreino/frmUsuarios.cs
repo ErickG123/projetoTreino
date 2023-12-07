@@ -38,6 +38,7 @@ namespace projetoTreino
             if (txtId.Text.Length < 1 || txtNome.Text.Length  < 1 || txtEmail.Text.Length < 1 || mkdSenha.Text.Length < 1)
             {
                 MessageBox.Show("Está faltando Informações", "ProjetoTeste", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             // Efetuando a Operação com Base no TipoDeCadastro

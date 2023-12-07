@@ -114,10 +114,12 @@ namespace projetoTreino
             if (txtCodigo.Text.Length < 1)
             {
                 MessageBox.Show("O Código do Cliente é obrigatório", "Projeto Treino", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             if (txtNome.Text.Length < 1)
             {
                 MessageBox.Show("O Nome do Cliente é obrigatório", "Projeto Treino", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             conn = new FbConnection(strConnection);
