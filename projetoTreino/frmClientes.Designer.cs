@@ -361,7 +361,7 @@
             grdClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdClientes.Size = new Size(552, 198);
             grdClientes.TabIndex = 6;
-            grdClientes.SelectionChanged += grdClientes_SelectionChanged;
+            grdClientes.CellClick += grdClientes_CellClick;
             // 
             // plFiltro
             // 

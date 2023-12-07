@@ -229,39 +229,53 @@ namespace projetoTreino
             Funcoes.exportarCsv(dt, "Clientes.csv");
         }
 
-        private void grdClientes_SelectionChanged(object sender, EventArgs e)
+        private void grdClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (grdClientes.SelectedRows.Count > 0)
+            DataGridView dgv = sender as DataGridView;
+
+            if (dgv != null)
             {
-                conn = new FbConnection(strConnection);
+                txtCodigo.Text = dgv.CurrentRow.Cells["id"].Value.ToString();
+                int idCliente = int.Parse(txtCodigo.Text);
 
                 string sql = @"SELECT * FROM clientes WHERE id = @id";
                 FbCommand cmd = new FbCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@id", grdClientes.SelectedRows[0].Cells["id"].Value);
+                cmd.Parameters.AddWithValue("@id", idCliente);
 
-                DataTable dt = new DataTable();
-                FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
-                dataAdapter.Fill(dt);
+                conn.Open();
 
-                if (dt.Rows.Count > 0)
+                try
                 {
-                    txtCodigo.Text = $"{dt.Rows[0]["id"]}";
-                    mkdDCadastro.Text = $"{dt.Rows[0]["datacadastro"]}";
-                    txtNome.Text = $"{dt.Rows[0]["nome"]}";
-                    cmbSexo.SelectedValue = $"{dt.Rows[0]["sexo"]}";
-                    cmbPessoa.SelectedValue = $"{dt.Rows[0]["pessoa"]}";
-                    mkdCpf.Text = $"{dt.Rows[0]["cpf"]}";
-                    mkdCnpj.Text = $"{dt.Rows[0]["cnpj"]}";
-                    txtTelefone.Text = $"{dt.Rows[0]["telefone"]}";
-                    txtEndereco.Text = $"{dt.Rows[0]["endereco"]}";
-                    txtNumero.Text = $"{dt.Rows[0]["numero"]}";
-                    txtBairro.Text = $"{dt.Rows[0]["bairro"]}";
-                    cmbCidade.SelectedValue = (int)dt.Rows[0]["cidade"];
-                    txtUf.Text = $"{dt.Rows[0]["uf"]}";
-                    mkdCep.Text = $"{dt.Rows[0]["cep"]}";
+                    FbDataReader reader = cmd.ExecuteReader();
 
-                    Funcoes.desabilitarCampos(plClientes);
+                    while (reader.Read())
+                    {
+                        //mkdDCadastro.Text = reader["datacadastro"] != DBNull.Value ? (DateTime)reader["datacadastro"] : "";
+                        txtNome.Text = reader["nome"] != DBNull.Value ? (string)reader["nome"] : "";
+                        cmbSexo.SelectedValue = reader["sexo"] != DBNull.Value ? (string)reader["sexo"] : "";
+                        cmbPessoa.SelectedValue = reader["pessoa"] != DBNull.Value ? (string)reader["pessoa"] : "";
+                        mkdCpf.Text = reader["cpf"] != DBNull.Value ? (string)reader["cpf"] : "";
+                        mkdCnpj.Text = reader["cnpj"] != DBNull.Value ? (string)reader["cnpj"] : "";
+                        txtTelefone.Text = reader["telefone"] != DBNull.Value ? (string)reader["telefone"] : "";
+                        txtEndereco.Text = reader["endereco"] != DBNull.Value ? (string)reader["endereco"] : "";
+                        txtNumero.Text = reader["numero"] != DBNull.Value ? (string)reader["numero"] : "";
+                        txtBairro.Text = reader["bairro"] != DBNull.Value ? (string)reader["bairro"] : "";
+                        cmbCidade.SelectedValue = reader["cidade"] != DBNull.Value ? (string)reader["cidade"] : "";
+                        txtUf.Text = reader["uf"] != DBNull.Value ? (string)reader["uf"] : "";
+                        mkdCep.Text = reader["cep"] != DBNull.Value ? (string)reader["cep"] : "";
+                    }
+
+                    reader.Close();
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro!" + ex.Message);
+                    conn.Close();
+                    return;
+                }
+
+                conn.Close();
+                Funcoes.desabilitarCampos(plClientes);
             }
         }
     }
