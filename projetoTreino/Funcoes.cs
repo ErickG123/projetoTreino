@@ -105,7 +105,13 @@ namespace projetoTreino
 
             System.IO.File.WriteAllText(fileName, sb.ToString());
             MessageBox.Show("Exportado com sucesso!", "Projeto Treino", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Process.Start(fileName);
+
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo($"{fileName}")
+            {
+                UseShellExecute = true
+            };
+            p.Start();
         }
     }
 }
