@@ -24,5 +24,10 @@ namespace projetoTreino
             grdVendedores.Width = ClientSize.Width;
             grdVendedores.Height = btOk.Top - 5;
         }
+
+        private void btOk_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
     }
 }

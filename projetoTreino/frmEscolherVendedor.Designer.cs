@@ -60,6 +60,7 @@
             btOk.TabIndex = 9;
             btOk.Text = "Ok";
             btOk.UseVisualStyleBackColor = true;
+            btOk.Click += btOk_Click;
             // 
             // frmEscolherVendedor
             // 
@@ -69,6 +70,7 @@
             Controls.Add(btOk);
             Controls.Add(grdVendedores);
             Name = "frmEscolherVendedor";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Escolher Vendedor";
             Shown += frmEscolherVendedor_Shown;
             ((System.ComponentModel.ISupportInitialize)grdVendedores).EndInit();

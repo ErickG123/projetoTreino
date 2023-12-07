@@ -214,6 +214,7 @@
             Controls.Add(btSalvar);
             Controls.Add(grdClientes);
             Name = "frmEscolherCliente";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Escolher Cliente";
             ((System.ComponentModel.ISupportInitialize)grdClientes).EndInit();
             ((System.ComponentModel.ISupportInitialize)grdListaClientes).EndInit();
