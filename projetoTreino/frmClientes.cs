@@ -79,6 +79,12 @@ namespace projetoTreino
             cmbPessoa.DataSource = dtPessoa;
             cmbPessoa.DisplayMember = "ID";
             cmbPessoa.ValueMember = "Descr";
+
+            DataTable dtCidade = new DataTable();
+            dtCidade = retornarCidades();
+            cmbCidade.DataSource = dtCidade;
+            cmbCidade.DisplayMember = "id";
+            cmbCidade.ValueMember = "nome";
         }
 
         private void btNovo_Click(object sender, EventArgs e)
@@ -277,6 +283,19 @@ namespace projetoTreino
                 conn.Close();
                 Funcoes.desabilitarCampos(plClientes);
             }
+        }
+
+        public DataTable retornarCidades()
+        {
+            conn = new FbConnection(strConnection);
+
+            string sql = @"SELECT * FROM cidades";
+
+            DataTable dt = new DataTable();
+            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            dataAdapter.Fill(dt);
+
+            return dt;
         }
     }
 }
