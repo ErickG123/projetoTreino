@@ -112,8 +112,7 @@ namespace projetoTreino
                           valorvendavista, valorvendaprazo
                           ) VALUES (
                           @id, @descricao,  @custounitario, @quantidadeestoque,
-                          @valorvendavista, @valorvendaprazo
-                          )";
+                          @valorvendavista, @valorvendaprazo)";
                     cmd = new FbCommand(sql, conn);
 
                     conn.Open();

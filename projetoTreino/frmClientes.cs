@@ -239,7 +239,7 @@ namespace projetoTreino
 
         private void grdClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
+            DataGridView? dgv = sender as DataGridView;
 
             if (dgv != null)
             {
