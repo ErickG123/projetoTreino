@@ -52,23 +52,10 @@ namespace projetoTreino
             cmbPessoa.ValueMember = "Descr";
 
             DataTable dtCidade = new DataTable();
-            dtCidade = retornarCidades();
+            dtCidade = Funcoes.retornarCidades();
             cmbCidade.DataSource = dtCidade;
             cmbCidade.DisplayMember = "id";
             cmbCidade.ValueMember = "nome";
-        }
-
-        public DataTable retornarCidades()
-        {
-            conn = new FbConnection(strConnection);
-
-            string sql = @"SELECT * FROM cidades";
-
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
-            dataAdapter.Fill(dt);
-
-            return dt;
         }
 
         private void btOk_Click(object sender, EventArgs e)

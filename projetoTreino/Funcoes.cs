@@ -154,5 +154,39 @@ namespace projetoTreino
             DialogResult dialogResult = form.ShowDialog();
             return dialogResult;
         }
+
+        public static DataTable retornarCidades()
+        {
+            string strConnection = @"DataSource=localhost; 
+                                     Database=C:\DBFire\TREINO.FBD; 
+                                     username=sysdba; 
+                                     password=masterkey";
+            FbConnection conn = new FbConnection(strConnection);
+
+            string sql = @"SELECT * FROM cidades";
+
+            DataTable dt = new DataTable();
+            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            dataAdapter.Fill(dt);
+
+            return dt;
+        }
+
+        public static DataTable retornarProdutos()
+        {
+            string strConnection = @"DataSource=localhost; 
+                                     Database=C:\DBFire\TREINO.FBD; 
+                                     username=sysdba; 
+                                     password=masterkey";
+            FbConnection conn = new FbConnection(strConnection);
+
+            string sql = @"SELECT * FROM produtos";
+
+            DataTable dt = new DataTable();
+            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            dataAdapter.Fill(dt);
+
+            return dt;
+        }
     }
 }
