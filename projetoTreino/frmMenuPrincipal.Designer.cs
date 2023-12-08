@@ -34,6 +34,8 @@
             clientesToolStripMenuItem = new ToolStripMenuItem();
             flpBotoes = new FlowLayoutPanel();
             btClientes = new Button();
+            btProdutos = new Button();
+            btVendas = new Button();
             menuStrip1.SuspendLayout();
             flpBotoes.SuspendLayout();
             SuspendLayout();
@@ -72,6 +74,8 @@
             // 
             flpBotoes.BackColor = SystemColors.Highlight;
             flpBotoes.Controls.Add(btClientes);
+            flpBotoes.Controls.Add(btProdutos);
+            flpBotoes.Controls.Add(btVendas);
             flpBotoes.Location = new Point(12, 27);
             flpBotoes.Name = "flpBotoes";
             flpBotoes.Size = new Size(776, 64);
@@ -89,6 +93,32 @@
             btClientes.UseVisualStyleBackColor = true;
             btClientes.Click += btClientes_Click;
             // 
+            // btProdutos
+            // 
+            btProdutos.BackColor = Color.Transparent;
+            btProdutos.FlatStyle = FlatStyle.Flat;
+            btProdutos.ForeColor = SystemColors.Highlight;
+            btProdutos.Image = Properties.Resources.produtos;
+            btProdutos.Location = new Point(84, 3);
+            btProdutos.Name = "btProdutos";
+            btProdutos.Size = new Size(75, 61);
+            btProdutos.TabIndex = 2;
+            btProdutos.UseVisualStyleBackColor = false;
+            btProdutos.Click += btProdutos_Click;
+            // 
+            // btVendas
+            // 
+            btVendas.BackColor = Color.Transparent;
+            btVendas.FlatStyle = FlatStyle.Flat;
+            btVendas.ForeColor = SystemColors.Highlight;
+            btVendas.Image = Properties.Resources.venda1;
+            btVendas.Location = new Point(165, 3);
+            btVendas.Name = "btVendas";
+            btVendas.Size = new Size(75, 61);
+            btVendas.TabIndex = 3;
+            btVendas.UseVisualStyleBackColor = false;
+            btVendas.Click += btVendas_Click;
+            // 
             // frmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -100,6 +130,7 @@
             Name = "frmMenuPrincipal";
             Text = "Menu Principal";
             FormClosed += frmMenuPrincipal_FormClosed;
+            Shown += frmMenuPrincipal_Shown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             flpBotoes.ResumeLayout(false);
@@ -115,5 +146,7 @@
         private ToolStripMenuItem clientesToolStripMenuItem;
         private FlowLayoutPanel flpBotoes;
         private Button btClientes;
+        private Button btProdutos;
+        private Button btVendas;
     }
 }

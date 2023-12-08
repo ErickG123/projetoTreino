@@ -112,7 +112,7 @@
             // 
             // mkdCep
             // 
-            mkdCep.Location = new Point(639, 147);
+            mkdCep.Location = new Point(625, 138);
             mkdCep.Mask = "00\\.000\\-000";
             mkdCep.Name = "mkdCep";
             mkdCep.Size = new Size(106, 23);
@@ -120,7 +120,7 @@
             // 
             // txtUf
             // 
-            txtUf.Location = new Point(579, 147);
+            txtUf.Location = new Point(565, 138);
             txtUf.Name = "txtUf";
             txtUf.Size = new Size(42, 23);
             txtUf.TabIndex = 26;
@@ -128,42 +128,42 @@
             // cmbCidade
             // 
             cmbCidade.FormattingEnabled = true;
-            cmbCidade.Location = new Point(445, 147);
+            cmbCidade.Location = new Point(431, 138);
             cmbCidade.Name = "cmbCidade";
             cmbCidade.Size = new Size(121, 23);
             cmbCidade.TabIndex = 25;
             // 
             // txtBairro
             // 
-            txtBairro.Location = new Point(283, 147);
+            txtBairro.Location = new Point(269, 138);
             txtBairro.Name = "txtBairro";
             txtBairro.Size = new Size(147, 23);
             txtBairro.TabIndex = 24;
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(214, 147);
+            txtNumero.Location = new Point(200, 138);
             txtNumero.Name = "txtNumero";
             txtNumero.Size = new Size(51, 23);
             txtNumero.TabIndex = 23;
             // 
             // txtEndereco
             // 
-            txtEndereco.Location = new Point(14, 147);
+            txtEndereco.Location = new Point(0, 138);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.Size = new Size(182, 23);
             txtEndereco.TabIndex = 22;
             // 
             // txtTelefone
             // 
-            txtTelefone.Location = new Point(415, 84);
+            txtTelefone.Location = new Point(401, 75);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(137, 23);
             txtTelefone.TabIndex = 21;
             // 
             // mkdCnpj
             // 
-            mkdCnpj.Location = new Point(191, 84);
+            mkdCnpj.Location = new Point(177, 75);
             mkdCnpj.Mask = "00\\.000\\.000\\/0000\\-00";
             mkdCnpj.Name = "mkdCnpj";
             mkdCnpj.Size = new Size(205, 23);
@@ -171,7 +171,7 @@
             // 
             // mkdCpf
             // 
-            mkdCpf.Location = new Point(14, 84);
+            mkdCpf.Location = new Point(0, 75);
             mkdCpf.Mask = "000\\.000\\.000\\-00";
             mkdCpf.Name = "mkdCpf";
             mkdCpf.Size = new Size(159, 23);
@@ -180,7 +180,7 @@
             // cmbPessoa
             // 
             cmbPessoa.FormattingEnabled = true;
-            cmbPessoa.Location = new Point(624, 28);
+            cmbPessoa.Location = new Point(610, 19);
             cmbPessoa.Name = "cmbPessoa";
             cmbPessoa.Size = new Size(121, 23);
             cmbPessoa.TabIndex = 18;
@@ -188,21 +188,21 @@
             // cmbSexo
             // 
             cmbSexo.FormattingEnabled = true;
-            cmbSexo.Location = new Point(491, 28);
+            cmbSexo.Location = new Point(477, 19);
             cmbSexo.Name = "cmbSexo";
             cmbSexo.Size = new Size(121, 23);
             cmbSexo.TabIndex = 17;
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(191, 28);
+            txtNome.Location = new Point(177, 19);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(285, 23);
             txtNome.TabIndex = 16;
             // 
             // mkdDCadastro
             // 
-            mkdDCadastro.Location = new Point(75, 28);
+            mkdDCadastro.Location = new Point(61, 19);
             mkdDCadastro.Mask = "00/00/0000";
             mkdDCadastro.Name = "mkdDCadastro";
             mkdDCadastro.Size = new Size(98, 23);
@@ -211,7 +211,7 @@
             // 
             // txtCodigo
             // 
-            txtCodigo.Location = new Point(14, 28);
+            txtCodigo.Location = new Point(0, 19);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(46, 23);
             txtCodigo.TabIndex = 14;
@@ -219,7 +219,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(75, 10);
+            label14.Location = new Point(61, 1);
             label14.Name = "label14";
             label14.Size = new Size(98, 15);
             label14.TabIndex = 13;
@@ -228,7 +228,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(415, 66);
+            label13.Location = new Point(401, 57);
             label13.Name = "label13";
             label13.Size = new Size(51, 15);
             label13.TabIndex = 12;
@@ -237,7 +237,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(579, 129);
+            label12.Location = new Point(565, 120);
             label12.Name = "label12";
             label12.Size = new Size(21, 15);
             label12.TabIndex = 11;
@@ -246,7 +246,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(639, 129);
+            label11.Location = new Point(625, 120);
             label11.Name = "label11";
             label11.Size = new Size(28, 15);
             label11.TabIndex = 10;
@@ -255,7 +255,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(283, 129);
+            label10.Location = new Point(269, 120);
             label10.Name = "label10";
             label10.Size = new Size(38, 15);
             label10.TabIndex = 9;
@@ -264,7 +264,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(445, 129);
+            label9.Location = new Point(431, 120);
             label9.Name = "label9";
             label9.Size = new Size(44, 15);
             label9.TabIndex = 8;
@@ -273,7 +273,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(214, 129);
+            label8.Location = new Point(200, 120);
             label8.Name = "label8";
             label8.Size = new Size(51, 15);
             label8.TabIndex = 7;
@@ -282,7 +282,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(14, 129);
+            label7.Location = new Point(0, 120);
             label7.Name = "label7";
             label7.Size = new Size(56, 15);
             label7.TabIndex = 6;
@@ -291,7 +291,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(624, 10);
+            label6.Location = new Point(610, 1);
             label6.Name = "label6";
             label6.Size = new Size(43, 15);
             label6.TabIndex = 5;
@@ -300,7 +300,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(489, 10);
+            label5.Location = new Point(475, 1);
             label5.Name = "label5";
             label5.Size = new Size(32, 15);
             label5.TabIndex = 4;
@@ -309,7 +309,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(191, 66);
+            label4.Location = new Point(177, 57);
             label4.Name = "label4";
             label4.Size = new Size(34, 15);
             label4.TabIndex = 3;
@@ -318,7 +318,7 @@
             // lbCpf
             // 
             lbCpf.AutoSize = true;
-            lbCpf.Location = new Point(14, 66);
+            lbCpf.Location = new Point(0, 57);
             lbCpf.Name = "lbCpf";
             lbCpf.Size = new Size(28, 15);
             lbCpf.TabIndex = 2;
@@ -327,7 +327,7 @@
             // lbNome
             // 
             lbNome.AutoSize = true;
-            lbNome.Location = new Point(191, 10);
+            lbNome.Location = new Point(177, 1);
             lbNome.Name = "lbNome";
             lbNome.Size = new Size(40, 15);
             lbNome.TabIndex = 1;
@@ -336,7 +336,7 @@
             // lbCod
             // 
             lbCod.AutoSize = true;
-            lbCod.Location = new Point(14, 10);
+            lbCod.Location = new Point(0, 1);
             lbCod.Name = "lbCod";
             lbCod.Size = new Size(46, 15);
             lbCod.TabIndex = 0;
@@ -491,6 +491,7 @@
             Controls.Add(plClientes);
             Name = "frmClientes";
             Text = "Cadastro de Clientes";
+            Shown += frmClientes_Shown;
             plClientes.ResumeLayout(false);
             plClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)grdClientes).EndInit();

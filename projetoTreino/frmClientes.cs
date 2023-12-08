@@ -20,8 +20,8 @@ namespace projetoTreino
                                      password=masterkey";
         private FbConnection conn;
 
-        private string[] heads = { "Cod.", "Nome", "CPF", "Endereço" };
-        private int[] widths = { 50, 200, 100, 200 };
+        private string[] heads = { "Cod.", "Pessoa", "Nome", "CPF", "CNPJ", "Endereço", "Bairro", "Cidade", "UF", "Telefone" };
+        private int[] widths = { 50, 50, 200, 100, 150, 200, 100, 100, 50, 100 };
         private TipoDeCadastro Modo = TipoDeCadastro.Novo;
 
         public frmClientes()
@@ -31,8 +31,8 @@ namespace projetoTreino
             combos();
 
             ToolTip tt = new ToolTip();
-            tt.SetToolTip(btNovo, "Novo");
-            tt.SetToolTip(btEditar, "Editar");
+            tt.SetToolTip(btNovo, "Novo Cliente");
+            tt.SetToolTip(btEditar, "Editar Cliente");
             tt.SetToolTip(btSalvar, "Salvar");
             tt.SetToolTip(btExportarCsv, "Exportar CSV");
         }
@@ -41,7 +41,7 @@ namespace projetoTreino
         {
             conn = new FbConnection(strConnection);
 
-            string sql = @"SELECT c.id, c.nome, c.cpf, c.endereco FROM clientes c";
+            string sql = @"SELECT c.id, c.pessoa, c.nome, c.cpf, c.cnpj, c.endereco, c.bairro, c.cidade, c.uf, c.telefone FROM clientes c";
             FbCommand cmd = new FbCommand(sql, conn);
 
             FbDataAdapter dataAdapter = new FbDataAdapter(cmd);
@@ -285,6 +285,25 @@ namespace projetoTreino
                 conn.Close();
                 Funcoes.desabilitarCampos(plClientes);
             }
+        }
+
+        private void frmClientes_Shown(object sender, EventArgs e)
+        {
+            flpBotoes.Left = 0;
+            flpBotoes.Top = 0;
+            flpBotoes.Width = ClientSize.Width;
+
+            plFiltro.Left = 0;
+            plFiltro.Top = flpBotoes.Bottom + 10;
+            plFiltro.Height = ClientSize.Height;
+
+            plClientes.Left = plFiltro.Width + 10;
+            plClientes.Top = plFiltro.Top;
+
+            grdClientes.Left = plFiltro.Width + 10;
+            grdClientes.Top = plClientes.Bottom + 10;
+            grdClientes.Height = ClientSize.Height;
+            grdClientes.Width = ClientSize.Width - plFiltro.Width - 10;
         }
     }
 }
