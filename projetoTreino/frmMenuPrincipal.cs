@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projetoTreino
 {
     public partial class frmMenuPrincipal : Form
     {
+        private HttpListener listener;
+
         public frmMenuPrincipal()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
 
-            ToolTip tt = new ToolTip();
+            ToolTip tt = new();
             tt.SetToolTip(btClientes, "Cadastrar Clientes");
             tt.SetToolTip(btProdutos, "Cadastrar Produtos");
         }
@@ -35,7 +31,7 @@ namespace projetoTreino
             else
             {
                 // Senão, ele abre o form
-                frmUsuarios usu = new frmUsuarios();
+                frmUsuarios usu = new();
                 usu.WindowState = FormWindowState.Maximized;
                 usu.Show();
             }
@@ -60,11 +56,6 @@ namespace projetoTreino
             abrirFrmVendas();
         }
 
-        private void frmMenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
         public void abrirFrmClientes()
         {
             var tem = Application.OpenForms.OfType<frmClientes>();
@@ -75,7 +66,7 @@ namespace projetoTreino
             }
             else
             {
-                frmClientes cli = new frmClientes();
+                frmClientes cli = new();
                 cli.WindowState = FormWindowState.Maximized;
                 cli.Show();
             }
@@ -91,7 +82,7 @@ namespace projetoTreino
             }
             else
             {
-                frmProdutos pro = new frmProdutos();
+                frmProdutos pro = new();
                 pro.WindowState = FormWindowState.Maximized;
                 pro.Show();
             }
@@ -107,7 +98,7 @@ namespace projetoTreino
             }
             else
             {
-                frmVendas ved = new frmVendas();
+                frmVendas ved = new();
                 ved.WindowState = FormWindowState.Maximized;
                 ved.Show();
             }
@@ -154,6 +145,67 @@ namespace projetoTreino
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private async void StartServer()
+        {
+            listener = new HttpListener();
+            listener.Prefixes.Add("http://localhost:5000/receber-cnpj/");
+            listener.Start();
+
+            while (true)
+            {
+                HttpListenerContext context = await listener.GetContextAsync();
+                HttpListenerRequest request = context.Request;
+
+                if (request.HttpMethod == "POST")
+                {
+                    using (StreamReader reader = new(request.InputStream, request.ContentEncoding))
+                    {
+                        string requestBody = reader.ReadToEnd();
+                        JObject json = JObject.Parse(requestBody);
+
+                        string cnpj = json["cnpj"]?.ToString() ?? string.Empty;
+                        string data = json["data"]?.ToString() ?? string.Empty;
+                        string status = json["statusCliente"]?.ToString() ?? string.Empty;
+
+                        AppendText($"CNPJ: {cnpj} | Data: {data} | Status: {status}");
+
+                        HttpListenerResponse response = context.Response;
+                        string responseString = "CNPJ processado com sucesso!";
+                        byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                        response.ContentLength64 = buffer.Length;
+                        await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
+                        response.OutputStream.Close();
+                    }
+                }
+            }
+        }
+
+        private void AppendText(string text)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(AppendText), new object[] { text });
+                return;
+            }
+            txtLog.AppendText(text);
+        }
+
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+            Task.Run(() => StartServer());
+        }
+
+        private void frmMenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (listener != null && listener.IsListening)
+            {
+                listener.Stop();
+                listener.Close();
+            }
+
+            Application.Exit();
         }
     }
 }

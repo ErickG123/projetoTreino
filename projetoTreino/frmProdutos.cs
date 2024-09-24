@@ -1,13 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using static projetoTreino.Enums;
 
 namespace projetoTreino
@@ -28,7 +20,7 @@ namespace projetoTreino
         {
             InitializeComponent();
 
-            ToolTip tt = new ToolTip();
+            ToolTip tt = new();
             tt.SetToolTip(btNovo, "Novo Produto");
             tt.SetToolTip(btEditar, "Editar Produto");
             tt.SetToolTip(btSalvar, "Salvar");
@@ -141,8 +133,8 @@ namespace projetoTreino
 
             string sql = @"SELECT * FROM estoque";
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             Funcoes.exportarCsv(dt, "Estoque.csv");
@@ -162,7 +154,7 @@ namespace projetoTreino
                     int idProduto = (int)grdProdutos.SelectedRows[0].Cells["id"].Value;
 
                     string sql = @"UPDATE estoque SET ativo = @ativo WHERE id = @id";
-                    FbCommand cmd = new FbCommand(sql, conn);
+                    FbCommand cmd = new(sql, conn);
                     cmd.Parameters.AddWithValue("@id", idProduto);
                     cmd.Parameters.AddWithValue("@ativo", ativoInativo);
 
@@ -191,10 +183,10 @@ namespace projetoTreino
             conn = new FbConnection(strConnection);
 
             string sql = @"SELECT p.id, p.descricao, p.custounitario, p.quantidadeestoque, p.ativo FROM estoque";
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
 
-            FbDataAdapter dataAdapter = new FbDataAdapter(cmd);
-            DataSet dataSet = new DataSet();
+            FbDataAdapter dataAdapter = new(cmd);
+            DataSet dataSet = new();
 
             conn.Open();
 

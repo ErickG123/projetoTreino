@@ -1,10 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projetoTreino
 {
@@ -14,11 +9,11 @@ namespace projetoTreino
                                      Database=C:\DBFire\TREINO.FBD; 
                                      username=sysdba; 
                                      password=masterkey";
-        public static FbConnection conn = new FbConnection(strConnection);
+        public static FbConnection conn = new(strConnection);
 
         public static void AtualizaBanco()
         {
-            List<string> listaAtualizacoes = new List<string>();
+            List<string> listaAtualizacoes = new();
             FbCommand cmd;
 
             foreach (string s in listaAtualizacoes)
@@ -110,7 +105,8 @@ namespace projetoTreino
             }
         }
 
-        public static bool campoExiste(string tabela, string campo) {
+        public static bool campoExiste(string tabela, string campo)
+        {
             string sql =
             @"
                 SELECT RDB$FIELD_NAME,RDB$RELATION_NAME
@@ -120,12 +116,12 @@ namespace projetoTreino
                 AND RDB$FIELD_NAME = @campo
             ";
 
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@tabela", tabela);
             cmd.Parameters.AddWithValue("@campo", campo);
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             return dt.Rows.Count > 0;
@@ -135,11 +131,11 @@ namespace projetoTreino
         {
             string sql = @"SELECT * FROM RDB$RELATIONS WHERE RDB$RELATION_NAME = @tabela";
 
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@tabela", nomeTabela);
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             return dt.Rows.Count > 0;
@@ -149,11 +145,11 @@ namespace projetoTreino
         {
             string sql = @"SELECT * FROM RDB$TRIGGERS WHERE RDB$TRIGGER_NAME = @trigger";
 
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@trigger", nomeTrigger);
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             return dt.Rows.Count > 0;
@@ -163,11 +159,11 @@ namespace projetoTreino
         {
             string sql = @"SELECT * FROM RDB$GENERATORS  WHERE RDB$GENERATOR_NAME = @generator";
 
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@generator", nomeGenerator);
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             return dt.Rows.Count > 0;
@@ -177,11 +173,11 @@ namespace projetoTreino
         {
             string sql = @"SELECT * FROM RDB$INDEX_SEGMENTS  WHERE RDB$INDEX_NAME  = @foreignKey";
 
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@foreignKey", nomeFK);
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             return dt.Rows.Count > 0;

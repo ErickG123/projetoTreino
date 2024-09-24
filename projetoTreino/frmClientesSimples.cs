@@ -1,13 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projetoTreino
 {
@@ -33,7 +25,7 @@ namespace projetoTreino
 
         public void combos()
         {
-            DataTable dtSexo = new DataTable();
+            DataTable dtSexo = new();
             dtSexo.Columns.Add("ID", typeof(string));
             dtSexo.Columns.Add("Descr", typeof(string));
             dtSexo.Rows.Add(new object[] { "F", "F" });
@@ -42,7 +34,7 @@ namespace projetoTreino
             cmbSexoS.DisplayMember = "Descr";
             cmbSexoS.ValueMember = "ID";
 
-            DataTable dtPessoa = new DataTable();
+            DataTable dtPessoa = new();
             dtPessoa.Columns.Add("ID", typeof(string));
             dtPessoa.Columns.Add("Descr", typeof(string));
             dtPessoa.Rows.Add(new object[] { "F", "F" });
@@ -51,7 +43,7 @@ namespace projetoTreino
             cmbPessoa.DisplayMember = "ID";
             cmbPessoa.ValueMember = "Descr";
 
-            DataTable dtCidade = new DataTable();
+            DataTable dtCidade = new();
             dtCidade = Funcoes.retornarCidades();
             cmbCidade.DataSource = dtCidade;
             cmbCidade.DisplayMember = "id";
@@ -77,7 +69,7 @@ namespace projetoTreino
                           @id, @nome, @cpf, @cnpj, @sexo, @pessoa,
                           @endereco, @numero, @cidade, @bairro,  @cep,
                           @uf, @telefone, @datacadastro)";
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
 
             cmd.Parameters.AddWithValue("@id", idCliente);
             cmd.Parameters.AddWithValue("@nome", txtNome.Text);

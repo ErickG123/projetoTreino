@@ -1,7 +1,5 @@
 using FirebirdSql.Data.FirebirdClient;
 using System.Data;
-using System.Data.Common;
-using System.Drawing;
 using static projetoTreino.Enums;
 
 namespace projetoTreino
@@ -23,7 +21,7 @@ namespace projetoTreino
             InitializeComponent();
             carregarDados();
 
-            ToolTip tt = new ToolTip();
+            ToolTip tt = new();
             tt.SetToolTip(btSalvar, "Salvar");
         }
 
@@ -35,7 +33,7 @@ namespace projetoTreino
             FbCommand cmd;
 
             // Validando se os Campos foram Preenchidos
-            if (txtId.Text.Length < 1 || txtNome.Text.Length  < 1 || txtEmail.Text.Length < 1 || mkdSenha.Text.Length < 1)
+            if (txtId.Text.Length < 1 || txtNome.Text.Length < 1 || txtEmail.Text.Length < 1 || mkdSenha.Text.Length < 1)
             {
                 MessageBox.Show("Está faltando Informações", "ProjetoTeste", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -120,7 +118,7 @@ namespace projetoTreino
                 txtId.Enabled = false;
             }
         }
-        
+
         // Mostrar dados nos campos
         private void grdUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -145,14 +143,14 @@ namespace projetoTreino
                 sql += " WHERE nome LIKE @texto OR email LIKE @texto";
             }
 
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
             if (txtFiltro.Text.Length > 0)
             {
                 cmd.Parameters.AddWithValue("@texto", txtFiltro.Text);
             }
 
-            FbDataAdapter dataAdapter = new FbDataAdapter(cmd);
-            DataSet dataSet = new DataSet();
+            FbDataAdapter dataAdapter = new(cmd);
+            DataSet dataSet = new();
 
             conn.Open();
 

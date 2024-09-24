@@ -1,11 +1,7 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace projetoTreino
 {
@@ -75,11 +71,11 @@ namespace projetoTreino
                                      Database=C:\DBFire\TREINO.FBD; 
                                      username=sysdba; 
                                      password=masterkey";
-            
-            FbConnection conn = new FbConnection(strConnection);
+
+            FbConnection conn = new(strConnection);
 
             string sql = @"SELECT COALESCE(MAX(id) + 1, 2) Cli FROM clientes";
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
 
             conn.Open();
 
@@ -93,7 +89,7 @@ namespace projetoTreino
         // Exportar dados para um CSV
         public static void exportarCsv(DataTable dt, string fileName)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.AppendLine("SEP=,");
             var headers = dt.Columns.Cast<DataColumn>();
             sb.AppendLine(string.Join(",", headers.Select(column => ($"\"{column.Caption.Replace("\"", "")}\"")).ToArray()));
@@ -116,11 +112,11 @@ namespace projetoTreino
 
         public static DialogResult inputBox(string titulo, string descricao, ref string valor)
         {
-            Form form = new Form();
-            Label label = new Label();
-            TextBox textBox = new TextBox();
-            Button buttonOk = new Button();
-            Button buttonCancel = new Button();
+            Form form = new();
+            Label label = new();
+            TextBox textBox = new();
+            Button buttonOk = new();
+            Button buttonCancel = new();
 
             form.Text = titulo;
             label.Text = descricao;
@@ -161,12 +157,12 @@ namespace projetoTreino
                                      Database=C:\DBFire\TREINO.FBD; 
                                      username=sysdba; 
                                      password=masterkey";
-            FbConnection conn = new FbConnection(strConnection);
+            FbConnection conn = new(strConnection);
 
             string sql = @"SELECT * FROM cidades";
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             return dt;
@@ -178,12 +174,12 @@ namespace projetoTreino
                                      Database=C:\DBFire\TREINO.FBD; 
                                      username=sysdba; 
                                      password=masterkey";
-            FbConnection conn = new FbConnection(strConnection);
+            FbConnection conn = new(strConnection);
 
             string sql = @"SELECT * FROM produtos";
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             return dt;

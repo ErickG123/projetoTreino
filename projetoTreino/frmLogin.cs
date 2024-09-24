@@ -1,13 +1,4 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projetoTreino
 {
@@ -31,7 +22,7 @@ namespace projetoTreino
 
             FbDataReader dr = null;
 
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
             cmd.Parameters.AddWithValue("@nome", txtNome.Text);
             cmd.Parameters.AddWithValue("@senha", mkdSenha.Text);
 
@@ -40,9 +31,9 @@ namespace projetoTreino
             try
             {
                 dr = cmd.ExecuteReader();
-                if(dr.Read())
+                if (dr.Read())
                 {
-                    frmMenuPrincipal frm = new frmMenuPrincipal();
+                    frmMenuPrincipal frm = new();
                     frm.WindowState = FormWindowState.Maximized;
                     frm.Show();
                     this.Hide();

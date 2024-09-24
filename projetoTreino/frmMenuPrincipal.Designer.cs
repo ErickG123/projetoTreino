@@ -36,6 +36,7 @@
             btClientes = new Button();
             btProdutos = new Button();
             btVendas = new Button();
+            txtLog = new TextBox();
             menuStrip1.SuspendLayout();
             flpBotoes.SuspendLayout();
             SuspendLayout();
@@ -119,17 +120,26 @@
             btVendas.UseVisualStyleBackColor = false;
             btVendas.Click += btVendas_Click;
             // 
+            // txtLog
+            // 
+            txtLog.Location = new Point(15, 162);
+            txtLog.Name = "txtLog";
+            txtLog.Size = new Size(413, 23);
+            txtLog.TabIndex = 2;
+            // 
             // frmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtLog);
             Controls.Add(flpBotoes);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "frmMenuPrincipal";
             Text = "Menu Principal";
             FormClosed += frmMenuPrincipal_FormClosed;
+            Load += frmMenuPrincipal_Load;
             Shown += frmMenuPrincipal_Shown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -148,5 +158,6 @@
         private Button btClientes;
         private Button btProdutos;
         private Button btVendas;
+        private TextBox txtLog;
     }
 }

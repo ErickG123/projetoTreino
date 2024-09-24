@@ -1,13 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using static projetoTreino.Enums;
 
 namespace projetoTreino
@@ -30,7 +22,7 @@ namespace projetoTreino
             carregarDados();
             combos();
 
-            ToolTip tt = new ToolTip();
+            ToolTip tt = new();
             tt.SetToolTip(btNovo, "Novo Cliente");
             tt.SetToolTip(btEditar, "Editar Cliente");
             tt.SetToolTip(btSalvar, "Salvar");
@@ -42,10 +34,10 @@ namespace projetoTreino
             conn = new FbConnection(strConnection);
 
             string sql = @"SELECT c.id, c.pessoa, c.nome, c.cpf, c.cnpj, c.endereco, c.bairro, c.cidade, c.uf, c.telefone FROM clientes c";
-            FbCommand cmd = new FbCommand(sql, conn);
+            FbCommand cmd = new(sql, conn);
 
-            FbDataAdapter dataAdapter = new FbDataAdapter(cmd);
-            DataSet dataSet = new DataSet();
+            FbDataAdapter dataAdapter = new(cmd);
+            DataSet dataSet = new();
 
             conn.Open();
 
@@ -62,7 +54,7 @@ namespace projetoTreino
 
         public void combos()
         {
-            DataTable dtSexo = new DataTable();
+            DataTable dtSexo = new();
             dtSexo.Columns.Add("ID", typeof(string));
             dtSexo.Columns.Add("Descr", typeof(string));
             dtSexo.Rows.Add(new object[] { "F", "F" });
@@ -71,7 +63,7 @@ namespace projetoTreino
             cmbSexo.DisplayMember = "Descr";
             cmbSexo.ValueMember = "ID";
 
-            DataTable dtPessoa = new DataTable();
+            DataTable dtPessoa = new();
             dtPessoa.Columns.Add("ID", typeof(string));
             dtPessoa.Columns.Add("Descr", typeof(string));
             dtPessoa.Rows.Add(new object[] { "F", "F" });
@@ -80,7 +72,7 @@ namespace projetoTreino
             cmbPessoa.DisplayMember = "ID";
             cmbPessoa.ValueMember = "Descr";
 
-            DataTable dtCidade = new DataTable();
+            DataTable dtCidade = new();
             dtCidade = Funcoes.retornarCidades();
             cmbCidade.DataSource = dtCidade;
             cmbCidade.DisplayMember = "id";
@@ -230,8 +222,8 @@ namespace projetoTreino
 
             string sql = @"SELECT * FROM clientes";
 
-            DataTable dt = new DataTable();
-            FbDataAdapter dataAdapter = new FbDataAdapter(sql, conn);
+            DataTable dt = new();
+            FbDataAdapter dataAdapter = new(sql, conn);
             dataAdapter.Fill(dt);
 
             Funcoes.exportarCsv(dt, "Clientes.csv");
@@ -247,7 +239,7 @@ namespace projetoTreino
                 int idCliente = int.Parse(txtCodigo.Text);
 
                 string sql = @"SELECT * FROM clientes WHERE id = @id";
-                FbCommand cmd = new FbCommand(sql, conn);
+                FbCommand cmd = new(sql, conn);
                 cmd.Parameters.AddWithValue("@id", idCliente);
 
                 conn.Open();
